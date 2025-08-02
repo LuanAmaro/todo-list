@@ -64,7 +64,7 @@ Siga o tutorial de instalação da documentação do [Docker](https://docs.docke
 6. `docker-compose up -d`
 
 #### Acesse o container
-7. `docker exec -it todo-list-php bash` ou `./container bash`
+7. `docker exec -it todo-list-php bash`
 
 #### Instale as dependencias
 8. `composer install` ou `composer update`
