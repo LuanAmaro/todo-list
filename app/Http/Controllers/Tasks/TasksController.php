@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tasks;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class TasksController extends Controller
@@ -77,7 +78,8 @@ class TasksController extends Controller
 
     private function getByTasks(array $filters = [])
     {
-        $query = Task::query();
+        $user  = Auth::user();
+        $query = Task::where("user_id", $user->id)->newQuery();
 
         if ($filters) {
             if (!empty($filters['status'])) {

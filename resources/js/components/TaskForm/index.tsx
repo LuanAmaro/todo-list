@@ -172,7 +172,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                         </Button>
                         <Button
                             type="submit"
-                            //   variant="gradient"
+                              variant="gradient"
                             disabled={
                                 isLoading ||
                                 !formData.title.trim() ||

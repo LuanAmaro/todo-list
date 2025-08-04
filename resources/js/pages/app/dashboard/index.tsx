@@ -20,9 +20,7 @@ export default function Dashboard({ tasks }: { tasks: Task[] }) {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [editingTask, setEditingTask] = useState<Task | null>(null);
-    const [filters, setFilters] = useState<TaskFilters>(
-        pageProps.filters || {}
-    );
+    const [filters, setFilters] = useState<TaskFilters>({});
 
     function handleSubmit(data: any) {
         setIsLoading(true);
@@ -82,14 +80,6 @@ export default function Dashboard({ tasks }: { tasks: Task[] }) {
             }
         );
     }
-
-    const hasFilters = useMemo(() => {
-        if (!filters.due_date || !filters.status) {
-            return false;
-        }
-
-        return true;
-    }, [filters]);
 
     return (
         <>
@@ -152,16 +142,16 @@ export default function Dashboard({ tasks }: { tasks: Task[] }) {
                                     <CardContent className="py-16 text-center">
                                         <CheckCircle2 className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
                                         <h3 className="text-lg font-medium mb-2">
-                                            {hasFilters
+                                            {Object.keys(filters).length > 0
                                                 ? "Nenhuma tarefa encontrada"
                                                 : "Nenhuma tarefa criada"}
                                         </h3>
                                         <p className="text-muted-foreground mb-4">
-                                            {hasFilters
+                                            {Object.keys(filters).length > 0
                                                 ? "Tente ajustar os filtros para ver mais resultados."
                                                 : "Comece criando sua primeira tarefa."}
                                         </p>
-                                        {!hasFilters && (
+                                        {Object.keys(filters).length === 0 && (
                                             <Button
                                                 variant="gradient"
                                                 onClick={() =>
