@@ -51,7 +51,7 @@ class AuthenticateController extends Controller
 
             return redirect()->intended('/');
         } catch (Exception $e) {
-            return redirect()->back()->with('message', 'E-mail e Senha incorreto!');
+            return redirect()->back()->with('message', 'A solicitação não pôde ser concluída. Por favor, tente novamente mais tarde.');
         }
     }
 
