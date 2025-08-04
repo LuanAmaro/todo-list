@@ -81,6 +81,12 @@ Siga o tutorial de instalação da documentação do [Docker](https://docs.docke
 ## Abre o navegador
  - Digite URL http://localhost
 
-### Informe e-mail e senha.
-E-mail: admin@demo.com <br>
+### Informe e-mail e senha, para testes:
+
+E-mail: user@taskmanager.com <br>
+Senha: 123456
+
+<br>
+
+E-mail: user2@taskmanager.com <br>
 Senha: 123456
