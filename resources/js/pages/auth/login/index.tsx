@@ -1,4 +1,4 @@
-import { Head, useForm } from "@inertiajs/react";
+import { Head, useForm, usePage } from "@inertiajs/react";
 import { CheckCircle, Lock, Mail, User } from "lucide-react";
 import {
     Card,
@@ -14,7 +14,9 @@ import { Button } from "@/components/ui/button";
 import { FormEventHandler } from "react";
 
 export default function Login() {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const pageProps = usePage().props as any;
+
+    const { data, setData, post } = useForm({
         name: "",
         email: "",
         password: "",
@@ -29,6 +31,8 @@ export default function Login() {
         e.preventDefault();
         post(route("auth.register"));
     };
+
+    console.log("pageProps:: ", pageProps);
 
     return (
         <>
@@ -131,6 +135,13 @@ export default function Login() {
                                     value="register"
                                     className="space-y-4"
                                 >
+                                    {pageProps?.flash?.message && (
+                                        <div className="bg-yellow-400 p-2 rounded-md">
+                                            <p className="text-sm font-thin text-center">
+                                                {pageProps?.flash?.message}
+                                            </p>
+                                        </div>
+                                    )}
                                     <form
                                         className="space-y-4"
                                         onSubmit={handleRegister}
